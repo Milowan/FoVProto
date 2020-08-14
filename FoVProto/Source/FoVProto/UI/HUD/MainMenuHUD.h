@@ -7,6 +7,7 @@
 #include "../Menus/MainMenuWidget.h"
 #include "../Menus/DetailsWidget.h"
 #include "../Menus/InstructionsWidget.h"
+#include "../Menus/GameMenuWidget.h"
 #include "MainMenuHUD.generated.h"
 
 /**
@@ -22,6 +23,7 @@ private:
 	UMainMenuWidget* mainMenu;
 	UDetailsWidget* details;
 	UInstructionsWidget* instructions;
+	UGameMenuWidget* gameMenu;
 	
 
 public:
@@ -32,6 +34,8 @@ public:
 	TSubclassOf<UDetailsWidget> detailsBP;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UInstructionsWidget> instructionsBP;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UGameMenuWidget> gameMenuBP;
 
 protected:
 
@@ -39,9 +43,45 @@ protected:
 
 public:
 
+	UFUNCTION(BlueprintCallable)
 	void OpenDetails();
+	UFUNCTION(BlueprintCallable)
 	void CloseDetails();
+	UFUNCTION(BlueprintCallable)
 	void OpenInstructions();
+	UFUNCTION(BlueprintCallable)
 	void CloseInstructions();
+	UFUNCTION(BlueprintCallable)
+	void OpenGameMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseGameMenu();
+	UFUNCTION(BlueprintCallable)
+	void OpenOptions();
+	UFUNCTION(BlueprintCallable)
+	void CloseOptions();
+	UFUNCTION(BlueprintCallable)
+	void OpenFormationMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseFormationMenu();
+	UFUNCTION(BlueprintCallable)
+	void OpenSquadMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseSquadMenu();
+	UFUNCTION(BlueprintCallable)
+	void OpenShopMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseShopMenu();
+	UFUNCTION(BlueprintCallable)
+	void OpenTradeMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseTradeMenu();
+	UFUNCTION(BlueprintCallable)
+	void OpenTeamMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseTeamMenu();
+	UFUNCTION(BlueprintCallable)
+	void OpenFriendsMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseFriendsMenu();
 	
 };
