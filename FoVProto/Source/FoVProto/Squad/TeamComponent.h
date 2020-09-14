@@ -4,33 +4,23 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "UIEventManagerComponent.generated.h"
+#include "TeamComponent.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FUIEvent);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class FOVPROTO_API UUIEventManagerComponent : public UActorComponent
+class FOVPROTO_API UTeamComponent : public UActorComponent
 {
-private:
-
 	GENERATED_BODY()
 
-	static UUIEventManagerComponent* instance;
-
 public:	
-	
-	UPROPERTY(BlueprintAssignable)
-	FUIEvent OpenMainMenu;
+	// Sets default values for this component's properties
+	UTeamComponent();
 
 protected:
-
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	 
-
-	static UUIEventManagerComponent* GetInstance();
-
+public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
