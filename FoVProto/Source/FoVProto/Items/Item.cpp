@@ -25,3 +25,12 @@ void AItem::Tick(float DeltaTime)
 
 }
 
+FString AItem::GetItemName()
+{
+	return itemName;
+}
+
+void AItem::SetItemName(FString name)
+{
+	itemName = name;
+}

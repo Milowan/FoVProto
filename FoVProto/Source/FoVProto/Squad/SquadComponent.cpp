@@ -10,6 +10,7 @@ USquadComponent::USquadComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
+	
 	// ...
 }
 
@@ -32,3 +33,12 @@ void USquadComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 	// ...
 }
 
+ASquad* USquadComponent::GetSquad()
+{
+	return squad;
+}
+
+void USquadComponent::SetSquad(ASquad* aSquad)
+{
+	squad = aSquad;
+}

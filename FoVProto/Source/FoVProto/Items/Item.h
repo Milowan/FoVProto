@@ -9,18 +9,25 @@
 UCLASS()
 class FOVPROTO_API AItem : public AActor
 {
+private:
+
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AItem();
+
+	FString itemName;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
+
+	// Sets default values for this actor's properties
+	AItem();
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	FString GetItemName();
+	void SetItemName(FString name);
 
 };

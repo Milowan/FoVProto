@@ -5,11 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
 #include "../Menus/AudioMenuWidget.h"
-#include "../Menus/FormationWidget.h"
 #include "../Menus/KeybindMenuWidget.h"
 #include "../Menus/OptionsMenuWidget.h"
-#include "../Menus/PauseWidget.h"
-#include "../Menus/SquadCommandWidget.h"
 #include "../Menus/VideoMenuWidget.h"
 #include "FoVHUD.generated.h"
 
@@ -24,11 +21,8 @@ private:
 	GENERATED_BODY()
 
 	UAudioMenuWidget* audioMenu;
-	UFormationWidget* formation;
 	UKeybindMenuWidget* keybindMenu;
 	UOptionsMenuWidget* optionsMenu;
-	UPauseWidget* pause;
-	USquadCommandWidget* squadCommand;
 	UVideoMenuWidget* videoMenu;
 	
 public:
@@ -36,15 +30,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UAudioMenuWidget> audioMenuBP;
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<UFormationWidget> formationBP;
-	UPROPERTY(EditAnywhere)
 	TSubclassOf<UKeybindMenuWidget> keybindMenuBP;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UOptionsMenuWidget> optionsMenuBP;
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<UPauseWidget> pauseBP;
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<USquadCommandWidget> squadCommandBP;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UVideoMenuWidget> videoMenuBP;
 
@@ -60,11 +48,6 @@ public:
 	void CloseAudioMenu();
 
 	UFUNCTION(BlueprintCallable)
-	void OpenFormation();
-	UFUNCTION(BlueprintCallable)
-	void CloseFormation();
-
-	UFUNCTION(BlueprintCallable)
 	void OpenKeybindMenu();
 	UFUNCTION(BlueprintCallable)
 	void CloseKeybindMenu();
@@ -73,16 +56,6 @@ public:
 	void OpenOptionsMenu();
 	UFUNCTION(BlueprintCallable)
 	void CloseOptionsMenu();
-
-	UFUNCTION(BlueprintCallable)
-	void OpenPauseMenu();
-	UFUNCTION(BlueprintCallable)
-	void ClosePauseMenu();
-
-	UFUNCTION(BlueprintCallable)
-	void OpenSquadCommand();
-	UFUNCTION(BlueprintCallable)
-	void CloseSquadCommand();
 
 	UFUNCTION(BlueprintCallable)
 	void OpenVideoMenu();

@@ -4,13 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Team.h"
 #include "TeamComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class FOVPROTO_API UTeamComponent : public UActorComponent
 {
+private:
+
 	GENERATED_BODY()
+
+	static const int MAXTEAMS = 4;
+	ATeam* teams[MAXTEAMS];
 
 public:	
 	// Sets default values for this component's properties

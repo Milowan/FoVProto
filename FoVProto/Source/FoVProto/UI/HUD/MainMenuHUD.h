@@ -3,39 +3,72 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/HUD.h"
-#include "../Menus/MainMenuWidget.h"
+#include "FoVHUD.h"
+#include "../../Framework/FoVGameInstance.h"
 #include "../Menus/DetailsWidget.h"
-#include "../Menus/InstructionsWidget.h"
+#include "../Menus/FormationMenuWidget.h"
 #include "../Menus/GameMenuWidget.h"
+#include "../Menus/InstructionsWidget.h"
+#include "../Menus/MainMenuWidget.h"
+#include "../Menus/ShopMenuWidget.h"
+#include "../Menus/SquadMenuWidget.h"
+#include "../Menus/TeamMenuWidget.h"
+#include "../Menus/TradeMenuWidget.h"
+#include "../../Characters/CaptainID.h"
+#include "../../Characters/SubordinateID.h"
 #include "MainMenuHUD.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChangeTargetRank, TEnumAsByte<Rank>, rank);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FTargetSubordinate, ASubordinateID*, subordinate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FTargetCaptain, ACaptainID*, captain);
 
 /**
  * 
  */
 UCLASS()
-class FOVPROTO_API AMainMenuHUD : public AHUD
+class FOVPROTO_API AMainMenuHUD : public AFoVHUD
 {
 private:
 
 	GENERATED_BODY()
 
-	UMainMenuWidget* mainMenu;
 	UDetailsWidget* details;
-	UInstructionsWidget* instructions;
+	UFormationMenuWidget* formationMenu;
 	UGameMenuWidget* gameMenu;
+	UInstructionsWidget* instructions;
+	UMainMenuWidget* mainMenu;
+	UShopMenuWidget* shopMenu;
+	USquadMenuWidget* squadMenu;
+	UTeamMenuWidget* teamMenu;
+	UTradeMenuWidget* tradeMenu;
 	
 
 public:
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<UMainMenuWidget> mainMenuBP;
-	UPROPERTY(EditAnywhere)
 	TSubclassOf<UDetailsWidget> detailsBP;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UFormationMenuWidget> formationMenuBP;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UGameMenuWidget> gameMenuBP;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UInstructionsWidget> instructionsBP;
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<UGameMenuWidget> gameMenuBP;
+	TSubclassOf<UMainMenuWidget> mainMenuBP;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UShopMenuWidget> shopMenuBP;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<USquadMenuWidget> squadMenuBP;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UTeamMenuWidget> teamMenuBP;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UTradeMenuWidget> tradeMenuBP;
+	UPROPERTY(BlueprintAssignable)
+	FChangeTargetRank OnChangeTargetRank;
+	UPROPERTY(BlueprintAssignable)
+	FTargetSubordinate OnTargetSubordinate;
+	UPROPERTY(BlueprintAssignable)
+	FTargetCaptain OnTargetCaptain;
 
 protected:
 
@@ -48,40 +81,48 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CloseDetails();
 	UFUNCTION(BlueprintCallable)
-	void OpenInstructions();
+	void OpenFormationMenu();
 	UFUNCTION(BlueprintCallable)
-	void CloseInstructions();
+	void CloseFormationMenu();
+	UFUNCTION(BlueprintCallable)
+	void OpenFriendsMenu();
+	UFUNCTION(BlueprintCallable)
+	void CloseFriendsMenu();
 	UFUNCTION(BlueprintCallable)
 	void OpenGameMenu();
 	UFUNCTION(BlueprintCallable)
 	void CloseGameMenu();
 	UFUNCTION(BlueprintCallable)
-	void OpenOptions();
+	void OpenInstructions();
 	UFUNCTION(BlueprintCallable)
-	void CloseOptions();
+	void CloseInstructions();
 	UFUNCTION(BlueprintCallable)
-	void OpenFormationMenu();
+	void OpenMainMenu();
 	UFUNCTION(BlueprintCallable)
-	void CloseFormationMenu();
-	UFUNCTION(BlueprintCallable)
-	void OpenSquadMenu();
-	UFUNCTION(BlueprintCallable)
-	void CloseSquadMenu();
+	void CloseMainMenu();
 	UFUNCTION(BlueprintCallable)
 	void OpenShopMenu();
 	UFUNCTION(BlueprintCallable)
 	void CloseShopMenu();
 	UFUNCTION(BlueprintCallable)
-	void OpenTradeMenu();
+	void OpenSquadMenu();
 	UFUNCTION(BlueprintCallable)
-	void CloseTradeMenu();
+	void CloseSquadMenu();
+	UFUNCTION(BlueprintCallable)
+	USquadMenuWidget* GetSquadMenu();
+	UFUNCTION(BlueprintCallable)
+	void BroadcastChangeTargetRank(TEnumAsByte<Rank> rank);
+	UFUNCTION(BlueprintCallable)
+	void TargetSubordinate(ASubordinateID* subordinate);
+	UFUNCTION(BlueprintCallable)
+	void TargetCaptain(ACaptainID* captain);
 	UFUNCTION(BlueprintCallable)
 	void OpenTeamMenu();
 	UFUNCTION(BlueprintCallable)
 	void CloseTeamMenu();
 	UFUNCTION(BlueprintCallable)
-	void OpenFriendsMenu();
+	void OpenTradeMenu();
 	UFUNCTION(BlueprintCallable)
-	void CloseFriendsMenu();
+	void CloseTradeMenu();
 	
 };
