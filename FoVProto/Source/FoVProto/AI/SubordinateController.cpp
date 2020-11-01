@@ -3,3 +3,8 @@
 
 #include "SubordinateController.h"
 
+ASubordinateController::ASubordinateController(const FObjectInitializer& oi) :
+	AAIController(oi)
+{
+	perception = CreateDefaultSubobject<UAIPerceptionComponent>(FName(TEXT("Perception")));
+}

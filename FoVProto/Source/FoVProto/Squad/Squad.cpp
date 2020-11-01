@@ -30,3 +30,14 @@ UCharacterIDComponent* ASquad::GetCaptainComponent()
 {
 	return captain;
 }
+
+TArray<ACharacter*> ASquad::GetAllCharacters()
+{
+	TArray<ACharacter*> squad;
+
+	squad.Add(characters->GetGroup()->GetCharacter(0)->GetCharacterID()->GetCharacter());
+
+	squad.Add(captain->GetCharacterID()->GetCharacter());
+
+	return squad;
+}

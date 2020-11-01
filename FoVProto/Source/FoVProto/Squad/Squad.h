@@ -8,6 +8,7 @@
 #include "FormationComponent.h"
 #include "TeamComponent.h"
 #include "CharacterGroupComponent.h"
+#include "Containers/Array.h"
 #include "Squad.generated.h"
 
 /**
@@ -37,5 +38,7 @@ public:
 	UTeamComponent* GetTeams();
 	UFUNCTION(BlueprintCallable)
 	UCharacterIDComponent* GetCaptainComponent();
+
+	TArray<ACharacter*> GetAllCharacters();
 	
 };

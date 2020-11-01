@@ -53,6 +53,8 @@ public:
 	FString GetName();
 	void SetName(FString name);
 
+	TSubclassOf<ACharacter> GetBP();
+
 	UFUNCTION(BlueprintCallable)
 	TEnumAsByte<Rank> GetRank();
 	void SetRank(TEnumAsByte<Rank> rank);

@@ -7,6 +7,7 @@
 #include "StatsComponent.h"
 #include "Loadout/LoadoutComponent.h"
 #include "../Types.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
 #include "FoVCharacter.generated.h"
 
 UCLASS()
@@ -16,11 +17,18 @@ private:
 
 	GENERATED_BODY()
 
+	UPROPERTY(EditAnywhere)
 	ULoadoutComponent* loadoutComponent;
+	UPROPERTY(EditAnywhere)
 	UStatsComponent* statsComponent;
+	UPROPERTY(EditAnywhere)
 	UWeaponComponent* equipedWeapon;
 
-	Rank characterRank;
+	UPROPERTY(EditAnywhere)
+	UAIPerceptionStimuliSourceComponent* pssc;
+
+	UPROPERTY(EditAnywhere)
+	TEnumAsByte<Rank> characterRank;
 
 protected:
 
@@ -49,5 +57,12 @@ public:
 	TEnumAsByte<Rank> GetRank();
 	UFUNCTION(BlueprintCallable)
 	void SetRank(TEnumAsByte<Rank> rank);
+
+	UFUNCTION(BlueprintCallable)
+	void StartShooting();
+	UFUNCTION(BlueprintCallable)
+	void StopShooting();
+	UFUNCTION(BlueprintCallable)
+	void Reload();
 
 };

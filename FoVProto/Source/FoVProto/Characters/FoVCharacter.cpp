@@ -13,6 +13,8 @@ AFoVCharacter::AFoVCharacter()
 	statsComponent = CreateDefaultSubobject<UStatsComponent>(FName(TEXT("Stats Component")));
 	equipedWeapon = CreateDefaultSubobject<UWeaponComponent>(FName(TEXT("Equiped Weapon Component")));
 
+	pssc = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(FName(TEXT("PSSC")));
+
 }
 
 // Called when the game starts or when spawned
@@ -59,4 +61,19 @@ TEnumAsByte<Rank> AFoVCharacter::GetRank()
 void AFoVCharacter::SetRank(TEnumAsByte<Rank> rank)
 {
 	characterRank = rank;
+}
+
+void AFoVCharacter::StartShooting()
+{
+
+}
+
+void AFoVCharacter::StopShooting()
+{
+
+}
+
+void AFoVCharacter::Reload()
+{
+
 }

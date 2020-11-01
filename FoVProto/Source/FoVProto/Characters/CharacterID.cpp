@@ -46,6 +46,11 @@ void ACharacterID::SetName(FString name)
 	characterName = name;
 }
 
+TSubclassOf<ACharacter> ACharacterID::GetBP()
+{
+	return characterBP;
+}
+
 TEnumAsByte<Rank> ACharacterID::GetRank()
 {
 	return characterRank;
